@@ -1,18 +1,29 @@
 import Link from "next/link";
 import React from "react";
+import { belgrano } from "../layout";
+import { StainButton } from "../page";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center gap-6">
-      <h2 className="bg-black text-white w-full text-center uppercase py-4 text-4xl">
+    <div
+      className={`flex flex-col items-center  ${belgrano.className} pt-8`}
+    >
+      <h2 className="text-3xl uppercase text-[#6C0000] font-semibold underline text-center decoration-[#6C0000] underline-offset-4 px-6">
         Setting the scene
       </h2>
-      <br /><br />
-      {settingTheSceneText.map(text =>
-        <p>{text}</p>
-      )}
-      <Link href={`/main-game/starters`} className="border-2 border-[#ffffff] text-black bg-white p-8">Link na Starters</Link>
-
+      <br />
+      <br />
+      <div className="flex flex-col justrify gap-6">
+        {settingTheSceneText.map((text) => (
+          <p className="text-[#6C0000] text-center px-6">{text}</p>
+        ))}
+      </div>
+      <Link
+        href={`/main-game/starters`}
+        className=" p-8"
+      >
+       <StainButton />
+      </Link>
     </div>
   );
 }

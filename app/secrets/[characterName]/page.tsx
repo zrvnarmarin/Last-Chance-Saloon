@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import { belgrano } from "@/app/layout";
+import { StainButton } from "@/app/page";
 
 export default function Home({
   params,
@@ -7,35 +9,61 @@ export default function Home({
   params: { characterName: string };
 }) {
   return (
-    <div className="flex flex-col items-center gap-6">
-      <h1 className="text-3xl">TVOJA TAJNA</h1>
-      <p className="text-2xl">{params.characterName}</p>
-      {/* {characterSecrets.map((cs) => (
-        <p>{cs.characterSecret.generalSecretInfo}</p>
-      ))} */}
+    <div
+      className={`flex flex-col items-center gap-6 pt-8 ${belgrano.className}`}
+    >
+      <h1 className="text-3xl uppercase text-[#6C0000] font-semibold underline decoration-[#6C0000] underline-offset-4">
+        TVOJA TAJNA
+      </h1>
+      {/* <p className="text-2xl">{params.characterName}</p> */}
       {characterSecrets
         .filter((cs) => cs.characterName === params.characterName)
         .map((cs) => (
-          <p className="text-lg text-white">
-            id: {cs.id}, {cs.characterName}
-          </p>
+          // <p className="text-lg text-white">
+          //   id: {cs.id}, {cs.characterName}
+          // </p>
+          <div key={cs.id} className="flex flex-col gap-2">
+            <p className="text-[#6C0000] text-start px-6">{cs.characterSecret.generalSecretInfo}</p>
+            <div className="flex flex-col gap-2">
+              <p className="text-[#6C0000] text-start px-6 pb-2 pt-5">
+                {
+                  cs.characterSecret.characterPossessions
+                    .characterPossessionsIntro
+                }
+              </p>
+              <ul className="px-6">
+                {cs.characterSecret.characterPossessions.characterPossessionsList.map(
+                  (possession) => (
+                    <li key={possession} className="flex items-start gap-2 text-[#6C0000] text-start ">
+                      {/* Icon rendered with fixed size */}
+                      <span>
+                        <StarIcon />
+                      </span>
+                      {possession}
+                    </li>
+                  )
+                )}
+              </ul>
+              <p className="text-[#6C0000] text-center px-6 pt-5 font-semibold">{cs.characterSecret.secretInstructions}</p>
+            </div>
+          </div>
         ))}
-      <br />
-      <br />
 
       {params.characterName === characterSecrets[5].characterName ? (
         <Link
           href={`/setting-the-scene`}
-          className="border-2 border-[#ffffff] text-black bg-white p-8"
+          className="text-black cursor-pointer pb-8"
         >
-          Link na Setting the scene
+          <StainButton />
+          {/* Link na Setting the scene */}
         </Link>
       ) : (
         <Link
-          href={`/main-game/starters`}
-          className="border-2 border-[#ffffff] text-black bg-white p-8"
+          href={`/main-game/starters/`}
+          className=" text-black cursor-pointer pb-8"
         >
-          Link na Starters
+          {/* Link na Starters */}
+          <StainButton />
         </Link>
       )}
     </div>
@@ -57,7 +85,7 @@ export const characterSecrets = [
           "posudu duhana za žvakanje",
           "metak na kojem je urezano 'Avery'",
           "kartu na kojoj je zaokružen Rogersov novi ranč (tj. tvoj stari ranč)",
-          "letak za okružni sajam koji reklamira tvoju točku u sporednoj predstavi: 'Predstavljamo gospođicu Cassidy, razbojnicu u šeširu, revolveraša u haljini!'",
+          "letak za okružni sajam koji reklamira tvoju točku u sporednoj predstavi: 'Predstavljamo gospođicu Cassidy, razbojnicu sa šeširom, revolveraša u haljini!'",
           "stari novinski isječak intervjua koji si dala kada si postala prva vlasnica ranča u okrugu",
         ],
       },
@@ -172,3 +200,27 @@ export const characterSecrets = [
     },
   },
 ];
+
+export const StarIcon = () => {
+  return (
+    <svg
+      fill="#542A00"
+      viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg"
+      stroke="#542A00"
+      width={20}
+      height={20} // Ensures fixed size
+      className="w-[20px] h-[20px]" // Backup for Tailwind styling
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path d="M16 4.588l2.833 8.719H28l-7.416 5.387 2.832 8.719L16 22.023l-7.417 5.389 2.833-8.719L4 13.307h9.167L16 4.588z"></path>
+      </g>
+    </svg>
+  );
+};
