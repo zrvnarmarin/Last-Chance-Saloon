@@ -19,9 +19,6 @@ export default function Home({
       {characterSecrets
         .filter((cs) => cs.characterName === params.characterName)
         .map((cs) => (
-          // <p className="text-lg text-white">
-          //   id: {cs.id}, {cs.characterName}
-          // </p>
           <div key={cs.id} className="flex flex-col gap-2">
             <p className="text-[#6C0000] text-start px-6">{cs.characterSecret.generalSecretInfo}</p>
             <div className="flex flex-col gap-2">

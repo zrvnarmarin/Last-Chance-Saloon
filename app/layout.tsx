@@ -1,19 +1,6 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import { Metadata } from "next";
 import { Angkor, Belgrano } from "next/font/google";
-
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Saloon Game",
@@ -32,16 +19,11 @@ export const belgrano = Belgrano({
   display: "swap",
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+// Layout component needs to return the correct React type for `children`
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${angkor.className} bg-[#caa469]`}
-      >
+      <body className={`${angkor.className} bg-[#caa469]`}>
         {children}
       </body>
     </html>

@@ -30,7 +30,7 @@ export default function Home() {
       </h2> */}
       <div className="flex flex-col gap-4">
         {firstChunkOfDialogs.map((d) => (
-          <div className="flex gap-4">
+          <div className="flex gap-4" key={d.id}>
             <div className="h-24 w-2" style={{ backgroundColor: d.color }}></div>
             <div className="w-full flex flex-col pr-2">
               <p className="font-semibold text-[#000000] text-start pt-2">{d.characterName}:</p>
@@ -41,12 +41,12 @@ export default function Home() {
       </div>
       <div className="w-full bg-black flex flex-col gap-4 justify-center py-4">
         {firstHostText.map((hTxt) => (
-          <p className="text-[#ffffff] text-start px-6">&#x2022; {hTxt}</p>
+          <p className="text-[#ffffff] text-start px-6" key={hTxt}>&#x2022; {hTxt}</p>
         ))}
       </div>
       <div className="flex flex-col gap-4">
         {secondChunkOfDialogs.map((d) => (
-          <div className="flex gap-4">
+          <div className="flex gap-4" key={d.id}>
             <div className="h-24 w-2" style={{ backgroundColor: d.color }}></div>
             <div className="w-full flex flex-col pr-2">
               <p className="font-semibold text-[#000000] text-start pt-2">{d.characterName}:</p>
@@ -57,12 +57,12 @@ export default function Home() {
       </div>
       <div className="w-full bg-black flex flex-col gap-4 justify-center py-4">
         {secondHostText.map((hTxt) => (
-          <p className="text-[#ffffff] text-start px-6">&#x2022; {hTxt}</p>
+          <p className="text-[#ffffff] text-start px-6" key={hTxt}>&#x2022; {hTxt}</p>
         ))}
       </div>
       <div className="flex flex-col gap-4">
         {thirdChunkOfDialogs.map((d) => (
-          <div className="flex gap-4">
+          <div className="flex gap-4" key={d.id}>
             <div className="h-24 w-2" style={{ backgroundColor: d.color }}></div>
             <div className="w-full flex flex-col pr-2">
               <p className="font-semibold text-[#000000] text-start pt-2">{d.characterName}:</p>

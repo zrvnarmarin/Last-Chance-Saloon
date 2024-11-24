@@ -15,7 +15,7 @@ export default function Home() {
       <br />
       <div className="flex flex-col justrify gap-6">
         {settingTheSceneText.map((text) => (
-          <p className="text-[#6C0000] text-center px-6">{text}</p>
+          <p className="text-[#6C0000] text-center px-6" key={text}>{text}</p>
         ))}
       </div>
       <Link
