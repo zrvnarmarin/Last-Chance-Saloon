@@ -2,7 +2,7 @@ import React from "react";
 import { belgrano } from "@/app/layout";
 import Link from "next/link";
 import { StainButton } from "@/app/page";
-import { characterIntroductions, firstChunkOfDialogs, firstHostText, secondChunkOfDialogs, secondHostText,thirdChunkOfDialogs } from "@/app/data/mainCourseData";
+import { firstChunkOfDialogs, firstHostText, secondChunkOfDialogs, secondHostText,thirdChunkOfDialogs } from "@/app/data/mainCourseData";
 
 export default function Home() {
   return (
